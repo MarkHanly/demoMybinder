@@ -1,0 +1,45 @@
+---
+title: "COVID-19 Incidence"
+author: "Mark Hanly"
+date: "20/01/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE, warning=FALSE, error=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warnings = FALSE)
+
+library(ggplot2)
+library(dplyr)
+library(utils)
+
+
+rawDF <- COVID19::covid19()
+```
+
+### Introduction
+
+### Results
+```{r}
+
+df <- rawDF %>% 
+    filter(administrative_area_level_1 %in% c('Ireland', 'Spain', 'United Kingdom')) %>% 
+    group_by(administrative_area_level_1) %>% 
+    mutate(confirmed2 = ifelse(is.na(confirmed), 0, confirmed),
+           cases = confirmed2 - lag(confirmed2),
+           mean14 = 100000*zoo::rollmean(cases, 14, fill = NA, align = 'right')/population) %>% 
+    filter(!is.na(mean14))
+
+
+ggplot(data = df, aes(x=date, y = mean14, color = id)) +
+geom_rect(xmin = 18607, xmax = 18631, ymin = 0, ymax = 100,
+      color=NA,
+      fill = 'pink',
+      alpha=0.03,
+      inherit.aes = FALSE) +
+    geom_line(size = 1) + 
+    labs(x = 'Date', y = '14-day moving average per 100,000 pop') +
+    scale_y_continuous(labels = scales::comma) 
+```
+
+### Discussion
+
