@@ -10,3 +10,8 @@ To transform and RStudio project into a compendium hosted on binder using the `h
 
 ## Installation
 To install holepunch enter `remotes::install_github("karthik/holepunch")`
+
+## Binder link
+<!-- badges: start -->
+[![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MarkHanly/demoMybinder/master?urlpath=rstudio)
+<!-- badges: end -->
