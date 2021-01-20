@@ -13,5 +13,5 @@ To install holepunch enter `remotes::install_github("karthik/holepunch")`
 
 ## Binder link
 <!-- badges: start -->
-[![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MarkHanly/demoMybinder/master?urlpath=rstudio)
+[![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MarkHanly/demoMybinder/main?urlpath=rstudio)
 <!-- badges: end -->
